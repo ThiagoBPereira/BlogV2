@@ -1,0 +1,29 @@
+﻿@model TBP.Blog.Aplicacao.ViewModels.PostViewModel
+
+@{
+	ViewBag.Title = "Details";
+}
+<div class="col-md-9">
+	<article class="panel panel-primary">
+		<header class="panel panel-heading NoPadding">
+			@Html.DataTitulo(i => Model.DataPostagem)
+
+			<hgroup>
+				<h1 class="panel-title">@Html.DisplayFor(i => Model.Titulo)</h1>
+			</hgroup>
+		</header>
+		<section class="panel panel-body">
+			@Html.DisplayFor(i => Model.Corpo)
+
+		</section>
+		<footer>
+			<h5 class="panel-footer">
+				@Html.SpanFor(i => Model.Tags)
+				@foreach (var atag in Model.Tags)
+			{
+					@Html.ActionLink(atag.Nome, "Index", new { tag = atag.Nome }, new { @class = "label label-info" })
+			}
+			</h5>
+		</footer>
+	</article>
+</div>

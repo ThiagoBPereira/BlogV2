@@ -1,0 +1,19 @@
+﻿@model IEnumerable<TBP.Blog.Aplicacao.ViewModels.PostViewModel>
+
+<div class="col-md-3">
+	<div class="panel panel-primary">
+		<header class="panel panel-heading NoPadding">
+			<hgroup>
+				<h1 class="panel-title title">5 Últimos</h1>
+			</hgroup>
+		</header>
+		<section class="panel panel-body">
+			<ul>
+				@foreach (var item in Model)
+				{
+					<li>@Html.ActionLink(item.Titulo, "Details", "Post", new { @id = item.IdPost }, null)</li>
+				}
+			</ul>
+		</section>
+	</div>
+</div>

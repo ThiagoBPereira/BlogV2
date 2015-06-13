@@ -1,0 +1,57 @@
+﻿@model TBP.Blog.Aplicacao.ViewModels.PostViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-md-9">
+        <div class="panel panel-primary">
+            <header class="panel panel-heading NoPadding">
+                @Html.DataTitulo(i => i.DataPostagem)
+                <hgroup>
+                    <h1 class="panel-title">@TBP.Blog.Infra.CrossCutting.Resources.Displays.CreatePost</h1>
+                </hgroup>
+            </header>
+            <section class="panel panel-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", placeholder = TBP.Blog.Infra.CrossCutting.Resources.Displays.EntreComTitulo } })
+                        @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(i => i.Tags, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorForTagEnum(i => i.Tags, htmlAttributes: new { @class = "form-control", placeholder = "Tag01, Tag02, Tag03" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Corpo, htmlAttributes: new { @class = "control-label " })
+                    <div>
+                        @Html.TextAreaFor(model => model.Corpo, htmlAttributes: new { @class = "form-control", rows = 6, placeholder = TBP.Blog.Infra.CrossCutting.Resources.Displays.EntreComDescricao })
+                        @Html.ValidationMessageFor(model => model.Corpo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="">
+                        <a href="@Url.Action("Index")" class="btn btn-default">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> @TBP.Blog.Infra.CrossCutting.Resources.Displays.Back
+                        </a>
+                        <input type="submit" value="@TBP.Blog.Infra.CrossCutting.Resources.Displays.Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Funcoes/FuncoesTag.js"></script>
+}

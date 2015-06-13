@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TBP.Blog.Aplicacao.ViewModels.PostViewModel>
+
+@{
+	ViewBag.Title = "Index";
+}
+<div class="col-md-9">
+	@foreach (var item in Model)
+	{
+		<article class="panel panel-primary">
+			<header class="panel panel-heading NoPadding">
+				@Html.DataTitulo(i => item.DataPostagem)
+				<hgroup>
+					<h1 class="panel-title">@Html.DisplayFor(i => item.Titulo)</h1>
+				</hgroup>
+			</header>
+			<section class="panel panel-body">
+				@Html.DisplayFor(i => item.CorpoDiminuido)
+				@Html.ActionLink("Continuar lendo", "Details", new { id = item.IdPost })
+			</section>
+			<footer>
+				<h5 class="panel-footer">
+					@Html.SpanFor(i => item.Tags)
+					@foreach (var atag in item.Tags)
+				{
+						@Html.ActionLink(atag.Nome, "Index", new { tag = atag.Nome }, new { @class = "label label-info" })
+				}
+				</h5>
+			</footer>
+		</article>
+	}
+</div>

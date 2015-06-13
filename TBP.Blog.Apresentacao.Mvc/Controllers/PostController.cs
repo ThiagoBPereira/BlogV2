@@ -38,11 +38,11 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
             return View(_postApp.Details(id));
         }
 
-        [HttpGet, AllowAnonymous, Route("Posts/Tag/{userid}/{tag}")]
+        [HttpGet, AllowAnonymous, Route("Posts/{userid}/{tag}")]
         public ActionResult Tag(string userid, string tag)
         {
             var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserId() : userid;
-            return View(_postApp.GetByTagName(usuario, tag));
+            return View("Index", _postApp.GetByTagName(usuario, tag));
         }
 
         [HttpGet, AllowAnonymous]
@@ -71,7 +71,7 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
                 return View("Create", model);
 
             _postApp.CreatePost(model);
-            return RedirectToAction("Index", new { Area = "", name = User.Identity.GetUserId() });
+            return RedirectToAction("Index", new { Area = "", userId = User.Identity.GetUserId() });
         }
 
         [HttpGet, Authorize, Route("Admin/Post/Edit/{id:guid?}")]

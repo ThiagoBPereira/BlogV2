@@ -9,12 +9,15 @@ namespace TBP.Blog.Infra.Data.Repositorios
     {
         public override IEnumerable<Post> ListAllByUser(string username)
         {
-            return DbSet.Where(i => i.UserId == username);
+            var lista = DbSet.Where(i => i.UserId == username);
+            return lista;
         }
 
         public IEnumerable<Post> ListAllByUser(string username, int indexPagina, int qtddPorPagina)
         {
-            var vistos = indexPagina * qtddPorPagina;
+            var index = indexPagina - 1;
+
+            var vistos = (index * qtddPorPagina);
             var todos = ListAllByUser(username)
                 .Skip(vistos)
                 .Take(qtddPorPagina);

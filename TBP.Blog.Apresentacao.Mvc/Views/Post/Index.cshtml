@@ -20,10 +20,10 @@
 			<footer>
 				<h5 class="panel-footer">
 					@Html.SpanFor(i => item.Tags)
-					@foreach (var atag in item.Tags)
-				{
-						@Html.ActionLink(atag.Nome, "Index", new { tag = atag.Nome }, new { @class = "label label-info" })
-				}
+                    @foreach (var atag in item.Tags)
+                    {
+                        @Html.ActionLink(atag.Nome, "Tag", "Post", new { tag = atag.Nome }, new { @class = "label label-info" })
+                    }
 				</h5>
 			</footer>
 		</article>

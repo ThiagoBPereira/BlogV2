@@ -16,5 +16,6 @@ namespace TBP.Blog.Aplicacao.ViewModels
         [MinLength(3)]
         public string Nome { get; set; }
         public virtual ICollection<PostViewModel> Posts { get; set; }
+        public string UserId { get; set; }
     }
 }

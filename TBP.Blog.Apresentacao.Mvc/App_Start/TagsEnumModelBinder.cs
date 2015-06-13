@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TBP.Blog.Aplicacao.ViewModels;
 
 namespace TBP.Blog.Apresentacao.Mvc
@@ -24,9 +25,9 @@ namespace TBP.Blog.Apresentacao.Mvc
 
             //Criar nova instancia doobjeto
             var instance = new List<TagViewModel>();
-
+            var user = controllerContext.RequestContext.HttpContext.User.Identity.GetUserId();
             //Arrumar uma maneira de inserir o Id por Aqui
-            instance.AddRange(valorSplitado.Select(tag => new TagViewModel { Nome = tag }));
+            instance.AddRange(valorSplitado.Select(tag => new TagViewModel { Nome = tag, UserId = user }));
 
             return instance;
         }

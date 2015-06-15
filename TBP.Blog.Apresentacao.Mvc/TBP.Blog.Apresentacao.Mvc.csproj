@@ -287,6 +287,10 @@
       <Project>{da99013f-feff-4ee1-9c9f-b3d3b8f65549}</Project>
       <Name>TBP.Blog.Infra.CrossCutting.IoC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TBP.Blog.Infra.CrossCutting.Resources\TBP.Blog.Infra.CrossCutting.Resources.csproj">
+      <Project>{19984b35-c781-4cd2-bdb3-997aa08b3226}</Project>
+      <Name>TBP.Blog.Infra.CrossCutting.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

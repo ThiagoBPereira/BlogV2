@@ -50,8 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PostValidationTests.cs" />
+    <Compile Include="Mock\TagRepositoryMock.cs" />
+    <Compile Include="Tests\PostValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\TagValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TBP.Blog.Dominio\TBP.Blog.Dominio.csproj">
@@ -59,6 +61,7 @@
       <Name>TBP.Blog.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

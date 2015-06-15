@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using TBP.Blog.Dominio.Specification.Tag;
+﻿using TBP.Blog.Dominio.Specification.Tag;
 using TBP.Blog.Dominio.Validation.Base.ProjetoModelo.Domain.Validation.Base;
 
 namespace TBP.Blog.Dominio.Validation.Tag

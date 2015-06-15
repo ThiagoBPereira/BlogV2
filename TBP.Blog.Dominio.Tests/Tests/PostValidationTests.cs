@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TBP.Blog.Dominio.Entidades;
 using TBP.Blog.Dominio.Specification.Post;
 
-namespace TBP.Blog.Dominio.Tests
+namespace TBP.Blog.Dominio.Tests.Tests
 {
     [TestClass]
     public class PostValidationTests

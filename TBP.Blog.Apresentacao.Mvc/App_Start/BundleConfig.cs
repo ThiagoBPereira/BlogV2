@@ -19,7 +19,7 @@ namespace TBP.Blog.Apresentacao.Mvc
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                       "~/Scripts/jquery-ui.min.js"));
+                       "~/Scripts/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/FuncaoTag").Include(
                        "~/Scripts/Funcoes/FuncoesTag.js"));

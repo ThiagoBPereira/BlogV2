@@ -9,8 +9,15 @@ namespace TBP.Blog.Infra.Data.Repositorios
     {
         public override IEnumerable<Post> ListAllByUser(string username)
         {
-            var lista = DbSet.Where(i => i.UserId == username);
+            var lista = DbSet.Where(i => i.UserId.ToLower().Equals(username.ToLower())).OrderByDescending(i => i.DataPostagem);
             return lista;
+        }
+        public IEnumerable<Post> ListAllByUserAndTagName(string username, string tag)
+        {
+            var lista =
+                Contexto.Tags.FirstOrDefault(i => i.UserId.Equals(username) && i.Nome.ToLower().Equals(tag.ToLower()));
+
+            return lista != null ? lista.Posts.OrderByDescending(i => i.DataPostagem).AsEnumerable() : new List<Post>();
         }
 
         public IEnumerable<Post> ListAllByUser(string username, int indexPagina, int qtddPorPagina)
@@ -25,16 +32,26 @@ namespace TBP.Blog.Infra.Data.Repositorios
             return todos;
         }
 
-        public IEnumerable<Post> GetByTagName(string username, string tag)
+        public IEnumerable<Post> GetByTagName(string username, string tag, int indexPagina, int qtddPorPagina)
         {
             //TODO 1: Verificar como melhorar essa consulta
-            var este =
-                Contexto.Tags.FirstOrDefault(i => i.UserId.Equals(username) && i.Nome.ToLower().Equals(tag.ToLower()));
+            var este = ListAllByUserAndTagName(username, tag);
 
-            return este != null ?
-                este.Posts :
-                new List<Post>();
+            var vistos = ((indexPagina - 1) * qtddPorPagina);
 
+            return este.Skip(vistos)
+                .Take(qtddPorPagina);
+
+        }
+
+        public int ObterTotalRegistros(string username)
+        {
+            return ListAllByUser(username).Count();
+        }
+
+        public int ObterTotalRegistrosByTag(string username, string tag)
+        {
+            return ListAllByUserAndTagName(username, tag).Count();
         }
     }
 }

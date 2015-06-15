@@ -16,6 +16,10 @@ namespace TBP.Blog.Aplicacao.Interfaces
 
         PostViewModel Details(Guid id);
 
-        IEnumerable<PostViewModel> GetByTagName(string username, string tag);
+        IEnumerable<PostViewModel> GetByTagName(string username, string tag, int indexPagina, int qtddPorPagina);
+
+        int ObterTotalRegistros(string username);
+
+        int ObterTotalRegistrosByTag(string username, string tag);
     }
 }

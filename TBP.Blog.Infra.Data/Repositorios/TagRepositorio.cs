@@ -9,7 +9,7 @@ namespace TBP.Blog.Infra.Data.Repositorios
     {
         public IEnumerable<Tag> GetByName(string username, string nome)
         {
-            return DbSet.Where(i => i.Nome.ToLower().Contains(nome.ToLower()) && i.UserId.Equals(username));
+            return DbSet.Where(i => i.Nome.ToLower().Contains(nome.ToLower()) && i.UserId.Equals(username)).ToList();
         }
     }
 }

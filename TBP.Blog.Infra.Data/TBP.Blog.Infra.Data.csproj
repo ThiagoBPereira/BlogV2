@@ -55,13 +55,9 @@
     <Compile Include="Contexto\ContextManager.cs" />
     <Compile Include="Interfaces\IContextManager.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201506120457088_InitialCreate.cs" />
-    <Compile Include="Migrations\201506120457088_InitialCreate.Designer.cs">
-      <DependentUpon>201506120457088_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506122254003_SegundaMudanca.cs" />
-    <Compile Include="Migrations\201506122254003_SegundaMudanca.Designer.cs">
-      <DependentUpon>201506122254003_SegundaMudanca.cs</DependentUpon>
+    <Compile Include="Migrations\201506150211472_InitialCreate.cs" />
+    <Compile Include="Migrations\201506150211472_InitialCreate.Designer.cs">
+      <DependentUpon>201506150211472_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,11 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506120457088_InitialCreate.resx">
-      <DependentUpon>201506120457088_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506122254003_SegundaMudanca.resx">
-      <DependentUpon>201506122254003_SegundaMudanca.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506150211472_InitialCreate.resx">
+      <DependentUpon>201506150211472_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

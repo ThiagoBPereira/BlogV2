@@ -17,11 +17,6 @@ namespace TBP.Blog.Aplicacao.App
             _postService = postService;
         }
 
-        public List<PostViewModel> ListAllByUser(string username)
-        {
-            return Mapper.Map<List<PostViewModel>>(_postService.ListAllByUser(username));
-        }
-
         public IEnumerable<PostViewModel> ListAllByUser(string username, int indexPagina, int qtddPorPagina)
         {
             return Mapper.Map<List<PostViewModel>>(_postService.ListAllByUser(username, indexPagina, qtddPorPagina));
@@ -31,43 +26,25 @@ namespace TBP.Blog.Aplicacao.App
         {
             var kk = Mapper.Map<Post>(post);
 
-            if (!kk.IsValid())
-            {
-                //Retornar o erro ao usuário
-                return;
-            }
-
             BeginTransaction();
 
-            _postService.Create(kk);
-
-            Commit();
+            if (_postService.Create(kk).IsValid)
+                Commit();
         }
 
         public void Update(PostViewModel post)
         {
             var kk = Mapper.Map<Post>(post);
-            if (!kk.IsValid())
-            {
-                //Retornar o erro ao usuário
-                return;
-            }
 
             BeginTransaction();
 
-            _postService.Edit(kk);
-
-            Commit();
+            if (_postService.Edit(kk).IsValid)
+                Commit();
         }
 
         public void Delete(PostViewModel post)
         {
             var kk = Mapper.Map<Post>(post);
-            if (!kk.IsValid())
-            {
-                //Retornar o erro ao usuário
-                return;
-            }
 
             BeginTransaction();
 
@@ -81,9 +58,19 @@ namespace TBP.Blog.Aplicacao.App
             return Mapper.Map<PostViewModel>(_postService.Details(id));
         }
 
-        public IEnumerable<PostViewModel> GetByTagName(string username, string tag)
+        public IEnumerable<PostViewModel> GetByTagName(string username, string tag, int indexPagina, int qtddPorPagina)
         {
-            return Mapper.Map<List<PostViewModel>>(_postService.GetByTagName(username, tag));
+            return Mapper.Map<List<PostViewModel>>(_postService.GetByTagName(username, tag, indexPagina, qtddPorPagina));
+        }
+
+        public int ObterTotalRegistros(string username)
+        {
+            return _postService.ObterTotalRegistros(username);
+        }
+
+        public int ObterTotalRegistrosByTag(string username, string tag)
+        {
+            return _postService.ObterTotalRegistrosByTag(username, tag);
         }
     }
 }

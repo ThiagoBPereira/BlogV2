@@ -14,7 +14,7 @@ namespace TBP.Blog.Dominio.Tests
         [TestCategory("Post - Apto para cadastro")]
         public void Post_esta_com_corpo_valido()
         {
-            var kk = new PostComCorpoValido();
+            var kk = new PostComCorpoValidoSpecification();
             Assert.IsTrue(kk.IsSatisfiedBy(_post));
         }
 
@@ -22,7 +22,7 @@ namespace TBP.Blog.Dominio.Tests
         [TestCategory("Post - Apto para cadastro")]
         public void Post_esta_com_titulo_valido()
         {
-            var kk = new PostComTituloValido();
+            var kk = new PostComTituloValidoSpecification();
             Assert.IsTrue(kk.IsSatisfiedBy(_post));
         }
 
@@ -30,7 +30,7 @@ namespace TBP.Blog.Dominio.Tests
         [TestCategory("Post - Apto para cadastro")]
         public void Post_esta_com_dataPostagem_valida()
         {
-            var kk = new PostComDataValida();
+            var kk = new PostComDataValidaSpecification();
             Assert.IsTrue(kk.IsSatisfiedBy(_post));
         }
 
@@ -38,7 +38,7 @@ namespace TBP.Blog.Dominio.Tests
         [TestCategory("Post - Apto para cadastro")]
         public void Post_esta_com_UserId_valido()
         {
-            var kk = new PostComUsuarioValido();
+            var kk = new PostComUsuarioValidoSpecification();
             Assert.IsTrue(kk.IsSatisfiedBy(_post));
         }
 

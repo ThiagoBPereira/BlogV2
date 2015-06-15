@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TBP.Blog.Aplicacao.Interfaces;
 using TBP.Blog.Aplicacao.ViewModels;
-using Microsoft.AspNet.Identity;
-using System;
 
 namespace TBP.Blog.Apresentacao.Mvc.Controllers
 {
@@ -18,17 +18,16 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
         #endregion
 
         #region Anonimos
-        [HttpGet, AllowAnonymous, Route("{userid}")]
-        public ActionResult Index(string userid)
+        [HttpGet, AllowAnonymous, Route("Posts/{userid}/{pagina:int?}")]
+        public ActionResult Index(string userid, int pagina = 1)
         {
-            return Index(userid, 1);
-        }
+            var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserName() : userid;
 
-        [HttpGet, AllowAnonymous, Route("{userid}/{pagina:int}")]
-        public ActionResult Index(string userid, int pagina)
-        {
-            var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserId() : userid;
+            //Montar Paginação
+            ViewBag.TotalRegistros = _postApp.ObterTotalRegistros(usuario);
+            ViewBag.PaginaAtual = pagina;
 
+            // 5 = quantidade por pagina
             return View(_postApp.ListAllByUser(usuario, pagina, 5));
         }
 
@@ -38,11 +37,16 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
             return View(_postApp.Details(id));
         }
 
-        [HttpGet, AllowAnonymous, Route("Posts/{userid}/{tag}")]
-        public ActionResult Tag(string userid, string tag)
+        [HttpGet, AllowAnonymous, Route("Posts/{userid}/{tag}/{pagina:int?}")]
+        public ActionResult Tag(string userid, string tag, int pagina = 1)
         {
-            var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserId() : userid;
-            return View("Index", _postApp.GetByTagName(usuario, tag));
+            //TODO 6: Inserir paginação
+            var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserName() : userid;
+            //Montar Paginação
+            ViewBag.TotalRegistros = _postApp.ObterTotalRegistrosByTag(usuario, tag);
+            ViewBag.PaginaAtual = pagina;
+
+            return View("Index", _postApp.GetByTagName(usuario, tag, pagina, 5));
         }
 
         [HttpGet, AllowAnonymous]
@@ -51,7 +55,7 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
             //Pegar Id da pagina do usuário em questão
             var userid = RouteData.Values["userid"] as string;
 
-            var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserId() : userid;
+            var usuario = string.IsNullOrEmpty(userid) ? HttpContext.User.Identity.GetUserName() : userid;
 
             return PartialView("_LastFive", _postApp.ListAllByUser(usuario, 1, 5));
         }
@@ -71,7 +75,7 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
                 return View("Create", model);
 
             _postApp.CreatePost(model);
-            return RedirectToAction("Index", new { Area = "", userId = User.Identity.GetUserId() });
+            return RedirectToAction("Index", new { Area = "", userId = User.Identity.GetUserName() });
         }
 
         [HttpGet, Authorize, Route("Admin/Post/Edit/{id:guid?}")]
@@ -83,7 +87,8 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
         [HttpPost, Authorize, Route("Admin/Post/Edit")]
         public ActionResult Edit(PostViewModel model)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid)
+                return View();
 
             _postApp.Update(model);
             return RedirectToAction("Index", new { Area = "" });

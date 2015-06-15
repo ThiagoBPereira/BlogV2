@@ -2,11 +2,11 @@
 
 namespace TBP.Blog.Dominio.Specification.Post
 {
-    public class PostComTituloValido : ISpecification<Entidades.Post>
+    public class PostComCorpoValidoSpecification : ISpecification<Entidades.Post>
     {
         public bool IsSatisfiedBy(Entidades.Post entity)
         {
-            return (entity.Titulo.Length > 3);
+            return (entity.Corpo.Length > 3);
         }
     }
 }

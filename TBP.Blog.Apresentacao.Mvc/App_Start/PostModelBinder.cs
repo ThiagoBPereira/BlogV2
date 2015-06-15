@@ -13,13 +13,16 @@ namespace TBP.Blog.Apresentacao.Mvc
                 return base.BindModel(controllerContext, bindingContext);
 
             //Pegando Id do usuario logado
-            var usuario = controllerContext.RequestContext.HttpContext.User.Identity.GetUserId();
+            var usuario = controllerContext.RequestContext.HttpContext.User.Identity.GetUserName();
 
             //usando os Binds normais
             var esta = base.BindModel(controllerContext, bindingContext) as PostViewModel;
 
             //Setando Id do usuário
-            esta.UserId = usuario;
+            if (esta != null)
+            {
+                esta.UserId = usuario;
+            }
 
             return esta;
         }

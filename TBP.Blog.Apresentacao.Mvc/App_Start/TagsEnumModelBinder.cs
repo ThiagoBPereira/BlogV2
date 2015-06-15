@@ -25,7 +25,7 @@ namespace TBP.Blog.Apresentacao.Mvc
 
             //Criar nova instancia doobjeto
             var instance = new List<TagViewModel>();
-            var user = controllerContext.RequestContext.HttpContext.User.Identity.GetUserId();
+            var user = controllerContext.RequestContext.HttpContext.User.Identity.GetUserName();
             //Arrumar uma maneira de inserir o Id por Aqui
             instance.AddRange(valorSplitado.Select(tag => new TagViewModel { Nome = tag, UserId = user }));
 

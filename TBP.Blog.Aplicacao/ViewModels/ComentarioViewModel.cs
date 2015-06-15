@@ -8,6 +8,7 @@ namespace TBP.Blog.Aplicacao.ViewModels
         public ComentarioViewModel()
         {
             IdComentario = Guid.NewGuid();
+            DataComentario = DateTime.Now;
         }
 
         public Guid IdComentario { get; set; }

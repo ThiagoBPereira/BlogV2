@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace TBP.Blog.Apresentacao.Mvc.Controllers
 {
@@ -15,14 +11,14 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Demo de Blog - Estudo";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "thiag.bpereira@gmail.com";
 
             return View();
         }

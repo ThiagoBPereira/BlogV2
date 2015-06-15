@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TBP.Blog.Infra.CrossCutting.Identity
 {
+    /// <summary>
+    /// Utilizado para substituir as Roles - Padrão do vNext
+    /// Fazer acesso as páginas ser mais dinamico, sem a necessidade de refatoração de código
+    ///  quando é necessário um novo tipo de acesso ao controle
+    /// </summary>
     [Table("AspNetClaims")]
     public class Claims
     {

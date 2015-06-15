@@ -6,5 +6,7 @@ namespace TBP.Blog.Dominio.Interfaces.Servicos
     public interface ITagService : IBaseService<Tag>
     {
         IEnumerable<Tag> GetByName(string username, string nome);
+
+        IEnumerable<Tag> ListAllByUser(string username);
     }
 }

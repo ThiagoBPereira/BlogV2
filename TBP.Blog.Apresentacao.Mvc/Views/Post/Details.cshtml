@@ -19,7 +19,7 @@
                 @Html.SpanFor(i => Model.Tags)
                 @foreach (var atag in Model.Tags)
                 {
-                    @Html.ActionLink(atag.Nome, "Tag", "Post", new { tag = atag.Nome }, new { @class = "label label-info" })
+                    @Html.ActionLink(atag.Nome, "Tag", "Post", new { tag = atag.Nome, userId = atag.UserId }, new { @class = "label label-info" })
                 }
             </h5>
         </footer>

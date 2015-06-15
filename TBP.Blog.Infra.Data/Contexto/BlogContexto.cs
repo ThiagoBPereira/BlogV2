@@ -12,7 +12,8 @@ namespace TBP.Blog.Infra.Data.Contexto
 
         public BlogContexto()
             : base("BlogConnectionString")
-        { }
+        {
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

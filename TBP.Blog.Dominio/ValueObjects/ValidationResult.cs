@@ -20,13 +20,13 @@ namespace TBP.Blog.Dominio.ValueObjects
             if (_errors.Contains(error))
                 _errors.Remove(error);
         }
-
         public void AdicionarErro(params ValidationResult[] resultadoValidacao)
         {
             if (resultadoValidacao == null) return;
 
+            //Ter certeza que nenhum erro é nulo
             foreach (var validationResult in resultadoValidacao.Where(result => result != null))
-                this._errors.AddRange(validationResult.Erros);
+                _errors.AddRange(validationResult.Erros);
         }
     }
 }

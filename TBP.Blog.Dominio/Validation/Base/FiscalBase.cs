@@ -11,12 +11,12 @@ namespace TBP.Blog.Dominio.Validation.Base
             private readonly Dictionary<string, IRegra<TEntity>> _validations =
                 new Dictionary<string, IRegra<TEntity>>();
 
-            protected virtual void AdicionarRegra(string nomeRegra, IRegra<TEntity> rule)
+            protected void AdicionarRegra(string nomeRegra, IRegra<TEntity> rule)
             {
                 _validations.Add(nomeRegra, rule);
             }
 
-            protected virtual void RemoverRegra(string nomeRegra)
+            protected void RemoverRegra(string nomeRegra)
             {
                 _validations.Remove(nomeRegra);
             }

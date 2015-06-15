@@ -2,7 +2,7 @@
 
 namespace TBP.Blog.Dominio.Specification.Post
 {
-    public class PostComUsuarioValido : ISpecification<Entidades.Post>
+    public class PostComUsuarioValidoSpecification : ISpecification<Entidades.Post>
     {
         public bool IsSatisfiedBy(Entidades.Post entity)
         {

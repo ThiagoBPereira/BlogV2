@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
+using TBP.Blog.Dominio.ValueObjects;
 
 namespace TBP.Blog.Dominio.Interfaces.Servicos
 {
     public interface IBaseService<TEntity> where TEntity : class
     {
-        void Create(TEntity obj);
+        ValidationResult Create(TEntity obj);
 
         TEntity Details(Guid id);
 
-        IEnumerable<TEntity> ListAllByUser(string username);
-
-        void Edit(TEntity obj);
+        ValidationResult Edit(TEntity obj);
 
         void Delete(TEntity obj);
     }

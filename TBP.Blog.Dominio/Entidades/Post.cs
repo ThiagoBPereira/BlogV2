@@ -32,7 +32,7 @@ namespace TBP.Blog.Dominio.Entidades
         /// <returns></returns>
         public bool IsValid()
         {
-            var fiscal = new PostAptoParaCadastro();
+            var fiscal = new PostAptoParaCadastroValidation();
 
             ResultadoValidacao = fiscal.Validar(this);
 

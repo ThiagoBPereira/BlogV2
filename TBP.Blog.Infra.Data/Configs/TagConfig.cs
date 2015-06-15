@@ -9,6 +9,8 @@ namespace TBP.Blog.Infra.Data.Configs
         {
             HasKey(i => i.IdTag);
             ToTable("Tags");
+
+            Ignore(i => i.ResultadoValidacao);
         }
 
     }

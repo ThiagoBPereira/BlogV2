@@ -10,6 +10,8 @@ namespace TBP.Blog.Aplicacao.ViewModels
         {
             IdPost = Guid.NewGuid();
             DataPostagem = DateTime.Now;
+            Tags = new List<TagViewModel>();
+            Comentarios = new List<ComentarioViewModel>();
         }
 
         public Guid IdPost { get; set; }
@@ -25,9 +27,9 @@ namespace TBP.Blog.Aplicacao.ViewModels
 
         public string CorpoDiminuido
         {
-            get { return (Corpo.Substring(0, Corpo.Length >= 15 ? 15 : Corpo.Length) + "..."); }
+            get { return (Corpo.Substring(0, Corpo.Length >= 360 ? 360 : Corpo.Length) + "..."); }
         }
-        public virtual IEnumerable<TagViewModel> Tags { get; set; }
-        public virtual IEnumerable<ComentarioViewModel> Comentarios { get; set; }
+        public IEnumerable<TagViewModel> Tags { get; set; }
+        public IEnumerable<ComentarioViewModel> Comentarios { get; set; }
     }
 }

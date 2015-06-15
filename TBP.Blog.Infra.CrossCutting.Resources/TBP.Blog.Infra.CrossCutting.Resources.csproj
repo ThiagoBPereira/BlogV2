@@ -39,12 +39,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Displays.resx</DependentUpon>
     </Compile>
+    <Compile Include="Erros.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Erros.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Displays.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Displays.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Erros.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Erros.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

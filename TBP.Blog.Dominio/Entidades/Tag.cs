@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using TBP.Blog.Dominio.Interfaces.Specification;
+using TBP.Blog.Dominio.Interfaces.Validation;
+using TBP.Blog.Dominio.Validation.Tag;
+using TBP.Blog.Dominio.ValueObjects;
 
 namespace TBP.Blog.Dominio.Entidades
 {
-    public class Tag
+    public class Tag : ISelfValidator
     {
         public Tag()
         {
@@ -15,5 +20,16 @@ namespace TBP.Blog.Dominio.Entidades
         public string UserId { get; set; }
         public string Nome { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+
+        public ValidationResult ResultadoValidacao { get; private set; }
+
+        public bool IsValid()
+        {
+            var validar = new TagDevidamentePreenchidaValidation();
+
+            var errors = validar.Validar(this);
+
+            return errors.IsValid;
+        }
     }
 }

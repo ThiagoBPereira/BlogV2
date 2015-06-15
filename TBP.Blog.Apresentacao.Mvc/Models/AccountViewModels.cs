@@ -18,6 +18,10 @@ namespace TBP.Blog.Apresentacao.Mvc.Models
         [Required]
         [Display(Name = "Sobrenome")]
         public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -65,10 +69,10 @@ namespace TBP.Blog.Apresentacao.Mvc.Models
 
     public class LoginViewModel
     {
+
         [Required]
-        [Display(Name = "E-mail")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -77,6 +81,7 @@ namespace TBP.Blog.Apresentacao.Mvc.Models
 
         [Display(Name = "Lembrar login?")]
         public bool RememberMe { get; set; }
+
     }
 
     public class RegisterViewModel
@@ -95,8 +100,8 @@ namespace TBP.Blog.Apresentacao.Mvc.Models
         public string Lastname { get; set; }
 
         [Required]
-        [Display(Name = "Gender")]
-        public string Gender { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

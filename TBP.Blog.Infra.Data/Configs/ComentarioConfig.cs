@@ -9,6 +9,8 @@ namespace TBP.Blog.Infra.Data.Configs
         {
             HasKey(i => i.IdComentario);
             ToTable("Comentarios");
+
+            Ignore(i => i.ResultadoValidacao);
         }
 
     }

@@ -24,14 +24,14 @@ namespace TBP.Blog.Infra.CrossCutting.Identity.Configuration
 
             var text = HttpUtility.HtmlEncode(message.Body);
 
-            //TODO 2: Verificar melhor forma de guardar as informações de envio de email
-            var msg = new MailMessage { From = new MailAddress("admin@portal.com.br", "Admin do Portal") };
+            //TODO 2: Verificar melhor forma de guardar as informações de envio de email e se envio tá sendo feito corretamente
+            var msg = new MailMessage { From = new MailAddress(ConfigurationManager.AppSettings["ContaDeEmail"], "Admin do Portal") };
             msg.To.Add(new MailAddress(message.Destination));
             msg.Subject = message.Subject;
             msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
             msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Html));
 
-            var smtpClient = new SmtpClient("smtp.provedor.com", Convert.ToInt32(587));
+            var smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtpProvedor"], Convert.ToInt32(ConfigurationManager.AppSettings["smtpPort"]));
             var credentials = new NetworkCredential(ConfigurationManager.AppSettings["ContaDeEmail"],
                 ConfigurationManager.AppSettings["SenhaEmail"]);
             smtpClient.Credentials = credentials;

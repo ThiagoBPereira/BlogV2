@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,7 +18,7 @@ namespace TBP.Blog.Infra.CrossCutting.Identity.Configuration
             IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<IdentityContext>()));
-		 
+
             // Configurando validator para nome de usuario
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -69,44 +67,6 @@ namespace TBP.Blog.Infra.CrossCutting.Identity.Configuration
             }
 
             return manager;
-        }
-
-        // Metodo para login async que guarda os dados Client conectado
-        public async Task<IdentityResult> SignInClientAsync(ApplicationUser user, string clientKey)
-        {
-            if (string.IsNullOrEmpty(clientKey))
-            {
-                throw new ArgumentNullException("clientKey");
-            }
-
-            var client = user.Clients.SingleOrDefault(c => c.ClientKey == clientKey);
-            if (client == null)
-            {
-                client = new Client() { ClientKey = clientKey };
-                user.Clients.Add(client);
-            }
-
-            var result = await UpdateAsync(user);
-            user.CurrentClientId = client.Id.ToString();
-            return result;
-        }
-
-        // Metodo para login async que remove os dados Client conectado
-        public async Task<IdentityResult> SignOutClientAsync(ApplicationUser user, string clientKey)
-        {
-            if (string.IsNullOrEmpty(clientKey))
-            {
-                throw new ArgumentNullException("clientKey");
-            }
-
-            var client = user.Clients.SingleOrDefault(c => c.ClientKey == clientKey);
-            if (client != null)
-            {
-                user.Clients.Remove(client);
-            }
-
-            user.CurrentClientId = null;
-            return await UpdateAsync(user);
         }
     }
 }

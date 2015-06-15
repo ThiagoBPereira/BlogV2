@@ -13,6 +13,7 @@ namespace TBP.Blog.Infra.Data.Migrations
                     {
                         IdComentario = c.Guid(nullable: false),
                         Nome = c.String(maxLength: 8000, unicode: false),
+                        Email = c.String(maxLength: 8000, unicode: false),
                         DataComentario = c.DateTime(nullable: false),
                         IdPost = c.Guid(nullable: false),
                     })
@@ -29,7 +30,6 @@ namespace TBP.Blog.Infra.Data.Migrations
                         Titulo = c.String(maxLength: 8000, unicode: false),
                         Corpo = c.String(maxLength: 8000, unicode: false),
                         DataPostagem = c.DateTime(nullable: false),
-                        ResultadoValidacao_Mensagem = c.String(maxLength: 8000, unicode: false),
                     })
                 .PrimaryKey(t => t.IdPost);
             
@@ -38,6 +38,7 @@ namespace TBP.Blog.Infra.Data.Migrations
                 c => new
                     {
                         IdTag = c.Guid(nullable: false),
+                        UserId = c.String(maxLength: 8000, unicode: false),
                         Nome = c.String(maxLength: 8000, unicode: false),
                     })
                 .PrimaryKey(t => t.IdTag);

@@ -1,100 +1,79 @@
-﻿//Criar Drop
-var autoComplete = {
-    //Criar um array
-    EstaListagem: [],
+﻿
+var repositorio = {
+    tags: [],
+    getTagByName: function (tagName) {
+        getTagByName(tagName);
+    }
+};
 
-    //Split de palavras
-    Split: function (palavras) {
-        return palavras.split(/,\s*/);
-    },
 
-    //Retirar ultima palavra do array de palavras
-    ExtrairUltimaPalavra: function (palavras) {
-        return this.Split(palavras).pop();
-    },
-
-    //Dar get nas tags existentes no banco de dados de acordo com a palavra escrita
-    GetNoServidor: function (palavra) {
-        $.ajax({
-            url: "/Admin/Tag/GetByName",
-            type: "GET",
-            contentType: "application/json",
-            async: false,
-            dataType: "json",
-            data: { term: this.ExtrairUltimaPalavra(palavra) }
-        }).success(function (data) {
-            autoComplete.EstaListagem = data.todas;
-        });
-    },
-
-    //Ordem de como resgatar os dados do servidor
-    ResgatarDados: function (palavras) {
-        //Extrair a ultima palavra
-        var palavra = this.ExtrairUltimaPalavra(palavras);
-        this.GetNoServidor(palavra);
-        return this.EstaListagem;
-    },
-
-    //Montar o controle com autocomplete
-    Montar: function (controle) {
-        $(controle)
-			.bind("keydown", function (event) {
-			    if (event.keyCode === $.ui.keyCode.TAB &&
-					$(this).autocomplete("instance").menu.active) {
-			        event.preventDefault();
-			    }
-			})
-		  .autocomplete({
-		      source: function (request, response) {
-		          response(autoComplete.SetarPropriedadesDaTag(autoComplete.ResgatarDados(request.term)));
-		      },
-		      search: function () {
-		          // Customização do tamanho mínimo da palavra
-		          var term = autoComplete.ExtrairUltimaPalavra(this.value);
-		          if (term.length < 2) {
-		              return false;
-		          }
-		          return true;
-		      },
-		      focus: function () {
-		          // prevent value inserted on focus
-		          return false;
-		      },
-		      select: function (event, ui) {
-		          var terms = autoComplete.Split(this.value);
-
-		          // remove the current input
-		          terms.pop();
-		          // add the selected item
-		          terms.push(ui.item.value);
-		          // add placeholder to get the comma-and-space at the end
-		          terms.push("");
-		          this.value = terms.join(",");
-
-		          return false;
-		      }
-		  });
-    },
-
-    SetarPropriedadesDaTag: function (data) {
-        return $.map(data, function (obj) {
-            return autoComplete.ParaCadaItem(obj);
-        });
-    },
-
-    ParaCadaItem: function (obj) {
-
-        var esta = {
+function montarDeAcordo(listagem) {
+    return $.map(listagem, function (obj) {
+        return {
             label: obj.Nome,
             value: obj.Nome,
-            id: obj.Id
+            id: obj.IdTag
         };
-        return esta;
+    });
+};
 
-    }
-}
+function getTagByName(tag) {
+    $.ajax({
+        dataType: "json",
+        url: "/Admin/Tag/GetByName",
+        type: "GET",
+        async: false,
+        data: { tag: tag }
+    }).success(function (data) {
+        repositorio.tags = data;
+    });
+};
 
-//Inserir AutoComplete ao carregar o documento
+function montarControle(controle) {
+    $(controle)
+        .bind("keydown", function (event) {
+            if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).autocomplete("instance").menu.active) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            source: function (request, response) {
+
+                var nome = (request.term.split(",")).pop();
+                repositorio.getTagByName(nome);
+                var cada = montarDeAcordo(repositorio.tags);
+
+                response(cada);
+            },
+            search: function () {
+                // Customização do tamanho mínimo da palavra
+                var term = this.value.split(",").pop();
+                if (term.length < 2) {
+                    return false;
+                }
+                return true;
+            },
+            focus: function () {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function (event, ui) {
+                var terms = this.value.split(",");
+
+                // remove the current input
+                terms.pop();
+                // add the selected item
+                terms.push(ui.item.value);
+                // add placeholder to get the comma-and-space at the end
+                terms.push("");
+                this.value = terms.join(",");
+
+                return false;
+            }
+        });
+};
+
 $(function () {
-    autoComplete.Montar("#Tags");
+    montarControle("#Tags");
 });

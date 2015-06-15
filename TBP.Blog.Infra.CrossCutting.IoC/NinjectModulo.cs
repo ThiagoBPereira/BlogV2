@@ -27,7 +27,7 @@ namespace TBP.Blog.Infra.CrossCutting.IoC
             Bind<ITagRepositorio>().To<TagRepositorio>();
 
             //Serviços
-            Bind(typeof(IBaseService<>)).To(typeof(BaseService<>));
+            //Bind(typeof(IBaseService<>)).To(typeof(BaseService<>));
             Bind<ITagService>().To<TagService>();
             Bind<IPostService>().To<PostService>();
             Bind<IComentarioService>().To<ComentarioService>();

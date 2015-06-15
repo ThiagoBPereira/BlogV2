@@ -29,11 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 -
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBP.Blog.Infra.CrossCutting.IoC", "TBP.Blog.Infra.CrossCutting.IoC\TBP.Blog.Infra.CrossCutting.IoC.csproj", "{DA99013F-FEFF-4EE1-9C9F-B3D3B8F65549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBP.Blog.Infra.CrossCutting.Resources", "TBP.Blog.Infra.CrossCutting.Resources\TBP.Blog.Infra.CrossCutting.Resources.csproj", "{19984B35-C781-4CD2-BDB3-997AA08B3226}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBP.Blog.Infra.CrossCutting.Identity", "TBP.Blog.Infra.CrossCutting.Identity\TBP.Blog.Infra.CrossCutting.Identity.csproj", "{992E0FD3-2725-4B6C-A554-9E73665CCD52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBP.Blog.Infra.CrossCutting.MvcFilters", "TBP.Blog.Infra.CrossCutting.MvcFilters\TBP.Blog.Infra.CrossCutting.MvcFilters.csproj", "{113D4A33-A57E-4F25-A95B-9B08AD76BD98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBP.Blog.Infra.CrossCutting.Resources", "TBP.Blog.Infra.CrossCutting.Resources\TBP.Blog.Infra.CrossCutting.Resources.csproj", "{19984B35-C781-4CD2-BDB3-997AA08B3226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,6 @@ Global
 		{DA99013F-FEFF-4EE1-9C9F-B3D3B8F65549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA99013F-FEFF-4EE1-9C9F-B3D3B8F65549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA99013F-FEFF-4EE1-9C9F-B3D3B8F65549}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Release|Any CPU.Build.0 = Release|Any CPU
 		{992E0FD3-2725-4B6C-A554-9E73665CCD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{992E0FD3-2725-4B6C-A554-9E73665CCD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{992E0FD3-2725-4B6C-A554-9E73665CCD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,6 +73,10 @@ Global
 		{113D4A33-A57E-4F25-A95B-9B08AD76BD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{113D4A33-A57E-4F25-A95B-9B08AD76BD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{113D4A33-A57E-4F25-A95B-9B08AD76BD98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19984B35-C781-4CD2-BDB3-997AA08B3226}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,8 +90,8 @@ Global
 		{A4DE58E4-754D-4FD5-A521-E249C7E60113} = {DA247A4B-13DE-430B-8AAF-E82496038721}
 		{6A8F3CCC-274A-473C-B39D-1350BDE953E5} = {875C2AAE-1EEE-498E-B755-C07DCD3E2E28}
 		{DA99013F-FEFF-4EE1-9C9F-B3D3B8F65549} = {1260E65F-A668-421C-A460-4B15CE9C04D9}
-		{19984B35-C781-4CD2-BDB3-997AA08B3226} = {1260E65F-A668-421C-A460-4B15CE9C04D9}
 		{992E0FD3-2725-4B6C-A554-9E73665CCD52} = {1260E65F-A668-421C-A460-4B15CE9C04D9}
+		{19984B35-C781-4CD2-BDB3-997AA08B3226} = {1260E65F-A668-421C-A460-4B15CE9C04D9}
 		{113D4A33-A57E-4F25-A95B-9B08AD76BD98} = {1260E65F-A668-421C-A460-4B15CE9C04D9}
 	EndGlobalSection
 EndGlobal

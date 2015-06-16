@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TBP.Blog.Dominio.Entidades;
 using TBP.Blog.Dominio.Interfaces.Repositorio;
 using TBP.Blog.Dominio.Interfaces.Servicos;
@@ -47,6 +48,11 @@ namespace TBP.Blog.Dominio.Servicos
         public void Delete(Comentario obj)
         {
             _repositorio.Delete(obj);
+        }
+
+        public IEnumerable<Comentario> ListAllByPost(Guid idPost)
+        {
+            return _repositorio.ListAllByPost(idPost);
         }
     }
 }

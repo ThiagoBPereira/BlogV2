@@ -16,6 +16,7 @@ namespace TBP.Blog.Dominio.Entidades
         public Guid IdComentario { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
+        public string Mensagem { get; set; }
         public DateTime DataComentario { get; set; }
         public Post Post { get; set; }
         public Guid IdPost { get; set; }

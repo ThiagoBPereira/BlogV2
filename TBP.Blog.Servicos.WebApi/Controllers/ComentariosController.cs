@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Newtonsoft.Json;
@@ -6,20 +7,21 @@ using TBP.Blog.Aplicacao.Interfaces;
 
 namespace TBP.Blog.Servicos.WebApi.Controllers
 {
+    [RoutePrefix("api/comentarios")]
     public class ComentariosController : ApiController
     {
-        private readonly ITagApp _itagApp;
+        private readonly IComentarioApp _icomentarioApp;
 
-        public ComentariosController(ITagApp itagApp)
+        public ComentariosController(IComentarioApp icomentarioApp)
         {
-            _itagApp = itagApp;
+            _icomentarioApp = icomentarioApp;
         }
 
-
         // GET api/comentarios
-        public IEnumerable<string> Get()
+        [Route("{idPost:guid}")]
+        public IEnumerable<string> Get(Guid idPost)
         {
-            var todas = _itagApp.ListAllByUser("thiagbpereira").ToList().Select(JsonConvert.SerializeObject);
+            var todas = _icomentarioApp.ListAllByPost(idPost).ToList().Select(JsonConvert.SerializeObject);
 
             return todas;
         }

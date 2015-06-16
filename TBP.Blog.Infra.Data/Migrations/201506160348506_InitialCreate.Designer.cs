@@ -13,7 +13,7 @@ namespace TBP.Blog.Infra.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201506150211472_InitialCreate"; }
+            get { return "201506160348506_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

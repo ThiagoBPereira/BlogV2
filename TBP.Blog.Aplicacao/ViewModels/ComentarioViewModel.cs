@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace TBP.Blog.Aplicacao.ViewModels
 {
@@ -21,8 +22,14 @@ namespace TBP.Blog.Aplicacao.ViewModels
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required]
+        [MinLength(3)]
+        public string Mensagem { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime DataComentario { get; set; }
+
+        [JsonIgnore]
         public PostViewModel PostViewModel { get; set; }
         public Guid IdPost { get; set; }
 

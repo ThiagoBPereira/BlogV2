@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using TBP.Blog.Aplicacao.Interfaces;
 using TBP.Blog.Aplicacao.ViewModels;
@@ -18,7 +19,7 @@ namespace TBP.Blog.Aplicacao.App
 
         public IEnumerable<TagViewModel> ListAllByUser(string username)
         {
-            return Mapper.Map<IEnumerable<Tag>, IEnumerable<TagViewModel>>(_itag.ListAllByUser(username));
+            return Mapper.Map<IEnumerable<TagViewModel>>(_itag.ListAllByUser(username));
         }
         public IEnumerable<TagViewModel> GetByName(string username, string nome)
         {

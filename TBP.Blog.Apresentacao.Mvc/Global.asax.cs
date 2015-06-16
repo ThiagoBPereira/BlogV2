@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Newtonsoft.Json;
 using TBP.Blog.Aplicacao.AutoMpp;
 using TBP.Blog.Aplicacao.ViewModels;
 
 namespace TBP.Blog.Apresentacao.Mvc
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -26,6 +25,12 @@ namespace TBP.Blog.Apresentacao.Mvc
             ModelBinders.Binders.Add(typeof(PostViewModel), new PostModelBinder());
 
 
+            //Setar configurações do Json convert para ignorar referencia circular
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
 
 
         }

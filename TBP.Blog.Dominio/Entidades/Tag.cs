@@ -27,9 +27,9 @@ namespace TBP.Blog.Dominio.Entidades
         {
             var validar = new TagDevidamentePreenchidaValidation();
 
-            var errors = validar.Validar(this);
+            ResultadoValidacao = validar.Validar(this);
 
-            return errors.IsValid;
+            return ResultadoValidacao.IsValid;
         }
     }
 }

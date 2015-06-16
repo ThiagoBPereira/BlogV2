@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using TBP.Blog.Aplicacao.App;
 
 namespace TBP.Blog.Apresentacao.Mvc.Controllers
@@ -13,12 +14,12 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
         }
 
         [HttpGet, Route("Admin/Tag/GetByName")]
-        public JsonResult GetByName(string tag)
+        public string GetByName(string tag)
         {
             var usuario = User.Identity.GetUserName();
             var items = _tagApp.GetByName(usuario, tag);
-
-            return Json(items, JsonRequestBehavior.AllowGet);
+            var retorno = JsonConvert.SerializeObject(items);
+            return retorno;
         }
     }
 }

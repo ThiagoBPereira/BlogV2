@@ -362,7 +362,9 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
+            //Corrigindo erro do log off
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

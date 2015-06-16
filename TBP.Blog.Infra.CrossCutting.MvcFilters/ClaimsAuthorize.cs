@@ -6,7 +6,6 @@ using System.Web.Mvc;
 namespace TBP.Blog.Infra.CrossCutting.MvcFilters
 {
     //Criação da Verificação de Claims - Implementação para área de admin
-    //TODO 4: Criar AuthorizeAttribute de edição e create
     public class ClaimsAuthorizeAttribute : AuthorizeAttribute
     {
         private readonly string _claimName;

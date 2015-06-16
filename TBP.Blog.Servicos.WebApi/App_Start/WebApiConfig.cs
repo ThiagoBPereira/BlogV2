@@ -22,15 +22,15 @@ namespace TBP.Blog.Servicos.WebApi
 
         public static void FormatadorDeResposta(HttpConfiguration config)
         {
-            //Remover formato XML
-            var formatters = config.Formatters;
 
+            var formatters = config.Formatters;
+            //Remover formato XML
             formatters.Remove(formatters.XmlFormatter);
 
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
-                Formatting = Formatting.Indented,
+                //Formatting = Formatting.Indented,
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
 

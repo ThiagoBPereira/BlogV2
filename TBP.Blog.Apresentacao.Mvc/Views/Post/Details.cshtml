@@ -1,4 +1,5 @@
-﻿@model TBP.Blog.Aplicacao.ViewModels.PostViewModel
+﻿@using Microsoft.AspNet.Identity
+@model TBP.Blog.Aplicacao.ViewModels.PostViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -7,6 +8,7 @@
     <article class="panel panel-primary">
         <header class="panel panel-heading NoPadding">
             @Html.DataTitulo(i => Model.DataPostagem)
+
             <hgroup>
                 <h1 class="panel-title">@Html.DisplayFor(i => Model.Titulo)</h1>
             </hgroup>
@@ -20,6 +22,15 @@
                 @foreach (var atag in Model.Tags)
                 {
                     @Html.ActionLink(atag.Nome, "Tag", "Post", new { tag = atag.Nome, userId = atag.UserId }, new { @class = "label label-info" })
+                }
+                @{
+                    var identity = HttpContext.Current.User.Identity.GetUserName();
+
+                    if (identity.ToLower().Equals(Model.UserId.ToLower()))
+                    {
+                        @Html.ActionLink("Edit", "Edit", "Post", new { userId = Model.UserId, id = Model.IdPost }, new { @class = "btn btn-primary blockquote-reverse" })
+                    }
+
                 }
             </h5>
         </footer>

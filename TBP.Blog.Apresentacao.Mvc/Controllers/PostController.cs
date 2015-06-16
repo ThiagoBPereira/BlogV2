@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using TBP.Blog.Aplicacao.Interfaces;
 using TBP.Blog.Aplicacao.ViewModels;
+using TBP.Blog.Infra.CrossCutting.MvcFilters;
 
 namespace TBP.Blog.Apresentacao.Mvc.Controllers
 {
@@ -78,13 +79,13 @@ namespace TBP.Blog.Apresentacao.Mvc.Controllers
             return RedirectToAction("Index", new { Area = "", userId = User.Identity.GetUserName() });
         }
 
-        [HttpGet, Authorize, Route("Admin/Post/Edit/{id:guid?}")]
+        [HttpGet, EditAuthorize("userId"), Route("Admin/{userid}/Post/Edit/{id:guid?}")]
         public ActionResult Edit(Guid id)
         {
             return View(_postApp.Details(id));
         }
 
-        [HttpPost, Authorize, Route("Admin/Post/Edit")]
+        [HttpPost, EditAuthorize("userId"), Route("Admin/{userid}/Post/Edit")]
         public ActionResult Edit(PostViewModel model)
         {
             if (!ModelState.IsValid)

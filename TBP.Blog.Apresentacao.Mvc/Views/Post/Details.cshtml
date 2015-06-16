@@ -28,7 +28,7 @@
 
                     if (identity.ToLower().Equals(Model.UserId.ToLower()))
                     {
-                        @Html.ActionLink("Edit", "Edit", "Post", new { userId = Model.UserId, id = Model.IdPost }, new { @class = "btn btn-primary blockquote-reverse" })
+                        @Html.ActionLink("Edit", "Edit", "Post", new { userId = Model.UserId, id = Model.IdPost }, new { @class = "btn btn-primary btn-xs pull-right" })
                     }
 
                 }

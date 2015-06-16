@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Migrations;
 using Microsoft.Practices.ServiceLocation;
 using TBP.Blog.Dominio.Interfaces.Repositorio;
 using TBP.Blog.Infra.Data.Contexto;
@@ -35,10 +37,10 @@ namespace TBP.Blog.Infra.Data.Repositorios
         {
             return DbSet.ToListAsync().Result;
         }
-
+        //TODO 7: Tratar concorrencia de dados
         public void Edit(TEntity obj)
         {
-            DbSet.Attach(obj);
+            Contexto.Set<TEntity>().Attach(obj);
             Contexto.Entry(obj).State = EntityState.Modified;
         }
 

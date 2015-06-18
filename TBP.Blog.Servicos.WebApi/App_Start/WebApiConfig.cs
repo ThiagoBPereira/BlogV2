@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using Newtonsoft.Json;
 
 namespace TBP.Blog.Servicos.WebApi
@@ -7,8 +8,10 @@ namespace TBP.Blog.Servicos.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
+            //Habilitar requisições de qualquer lugar
+            var corsAttr = new EnableCorsAttribute("*", "*", "*");
             // Web API configuration and services
-            config.EnableCors();
+            config.EnableCors(corsAttr);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

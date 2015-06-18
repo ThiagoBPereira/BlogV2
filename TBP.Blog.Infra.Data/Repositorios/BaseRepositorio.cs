@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Migrations;
 using Microsoft.Practices.ServiceLocation;
 using TBP.Blog.Dominio.Interfaces.Repositorio;
 using TBP.Blog.Infra.Data.Contexto;

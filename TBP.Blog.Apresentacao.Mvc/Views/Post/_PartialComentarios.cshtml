@@ -1,0 +1,33 @@
+﻿<div ng-app="minhaApp">
+    <div ng-controller="MeuCtrl">
+        <div ng-repeat="c in comentarios | orderBy:'-DataComentario'">
+            <section class="well well-sm">
+                <header>
+                    <h4>{{c.Nome}}</h4>
+                    <h6>Em:{{c.DataComentario | date: "dd/MM/yyyy"}}</h6>
+                </header>
+                <p>{{c.Mensagem}}</p>
+            </section>
+        </div>
+        @*criar formulario aqui*@
+
+        <form class="well well-sm">
+            <div class="form-group">
+                <label for="inputNome">Nome</label>
+                <input type="text" class="form-control" id="inputNome" ng-model="comentario.Nome" placeholder="Entre com seu nome">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" ng-model="comentario.Email" placeholder="Entre com seu email">
+            </div>
+            <div class="form-group">
+                <label for="inputMensagem">Mensagem</label>
+                <textarea class="form-control" id="inputMensagem" ng-model="comentario.Mensagem" placeholder="Entre com sua mensagem"></textarea>
+            </div>
+            <button type="button" class="btn btn-default" ng-click="enviarComentario()">Submit</button>
+        </form>
+
+
+    </div>
+</div>
+

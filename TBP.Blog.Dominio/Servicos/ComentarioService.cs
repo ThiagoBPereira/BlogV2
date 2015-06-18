@@ -23,7 +23,10 @@ namespace TBP.Blog.Dominio.Servicos
             if (!obj.IsValid())
             {
                 resultado.AdicionarErro(obj.ResultadoValidacao);
+                return resultado;
             }
+
+            _repositorio.Create(obj);
 
             return resultado;
         }

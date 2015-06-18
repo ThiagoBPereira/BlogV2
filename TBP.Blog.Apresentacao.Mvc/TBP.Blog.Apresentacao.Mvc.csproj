@@ -205,9 +205,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Funcoes\FuncoesComentarioAngular.js" />
     <Content Include="Scripts\Funcoes\FuncoesTag.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -266,6 +268,7 @@
     <Content Include="Views\Post\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LayoutPost.cshtml" />
     <Content Include="Views\Error\CustomError.cshtml" />
+    <Content Include="Views\Post\_PartialComentarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

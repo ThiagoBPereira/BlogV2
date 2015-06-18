@@ -7,7 +7,7 @@ namespace TBP.Blog.Dominio.Specification.Comentario
     {
         public bool IsSatisfiedBy(Entidades.Comentario entity)
         {
-            return (entity.DataComentario > DateTime.MinValue && entity.DataComentario <= DateTime.Now);
+            return (entity.DataComentario > DateTime.MinValue);
         }
     }
 }

@@ -7,5 +7,7 @@ namespace TBP.Blog.Aplicacao.Interfaces
     public interface IComentarioApp
     {
         IEnumerable<ComentarioViewModel> ListAllByPost(Guid idPost);
+
+        void Create(ComentarioViewModel obj);
     }
 }

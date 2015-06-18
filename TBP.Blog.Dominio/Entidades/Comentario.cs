@@ -27,9 +27,9 @@ namespace TBP.Blog.Dominio.Entidades
         {
             var validacao = new ComentarioAptoParaCadastro();
 
-            var fiscalizar = validacao.Validar(this);
+            ResultadoValidacao = validacao.Validar(this);
 
-            return fiscalizar.IsValid;
+            return ResultadoValidacao.IsValid;
         }
     }
 }

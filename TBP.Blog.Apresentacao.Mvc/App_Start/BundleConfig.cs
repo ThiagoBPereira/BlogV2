@@ -24,6 +24,8 @@ namespace TBP.Blog.Apresentacao.Mvc
             bundles.Add(new ScriptBundle("~/bundles/FuncaoTag").Include(
                        "~/Scripts/Funcoes/FuncoesTag.js"));
 
+
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
@@ -31,6 +33,14 @@ namespace TBP.Blog.Apresentacao.Mvc
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //AngularJS
+
+            bundles.Add(new ScriptBundle("~/bundles/FuncaoCometario").Include(
+                   "~/Scripts/Funcoes/FuncoesComentarioAngular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Angular").Include(
+                  "~/Scripts/angular.min.js"));
         }
     }
 }

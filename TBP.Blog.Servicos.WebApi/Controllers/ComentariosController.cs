@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using Newtonsoft.Json;
 using TBP.Blog.Aplicacao.Interfaces;
+using TBP.Blog.Aplicacao.ViewModels;
 
 namespace TBP.Blog.Servicos.WebApi.Controllers
 {
@@ -19,11 +20,11 @@ namespace TBP.Blog.Servicos.WebApi.Controllers
 
         // GET api/comentarios
         [Route("{idPost:guid}")]
-        public IEnumerable<string> Get(Guid idPost)
+        public string Get(Guid idPost)
         {
-            var todas = _icomentarioApp.ListAllByPost(idPost).ToList().Select(JsonConvert.SerializeObject);
-
-            return todas;
+            var todas = _icomentarioApp.ListAllByPost(idPost).ToArray();
+            var kk = JsonConvert.SerializeObject(todas);
+            return kk;
         }
 
         // GET api/comentarios/5
@@ -33,8 +34,9 @@ namespace TBP.Blog.Servicos.WebApi.Controllers
         }
 
         // POST api/comentarios
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ComentarioViewModel comentario)
         {
+            _icomentarioApp.Create(comentario);
         }
 
         // PUT api/comentarios/5
